@@ -1,15 +1,37 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
-export default new Router({
+let needAuth = false
+
+const router = new Router({
   routes: [
     {
-      path: '/',
+      path: '/HelloWorld',
       name: 'HelloWorld',
-      component: HelloWorld
+      component: () => import('@/components/HelloWorld'),
+      meta: {
+        auth: needAuth,
+        title: 'HelloWorld'
+      }
+    },
+    {
+      path: '/',
+      name: 'home',
+      component: () => import('@/components/home/home'),
+      meta: {
+        auth: needAuth,
+        title: '首页'
+      }
     }
   ]
 })
+
+router.afterEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+})
+
+export default router
