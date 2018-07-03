@@ -1,8 +1,5 @@
-let Config = {
-  site: 'fusion.aliapi-hangzhou.zanservice.com/api/v1'
+let config = {
+  site: 'webapi.fusion.tst.zanservice.com',
+  method: '/api/v1'
 }
-let Authorizedapp = {
-  key: '24827041',
-  secret: 'f07fef5fff817d4dccc89a8db4ef150c'
-}
-let wechatAppId =
+export const apiRoot = 'http://'.concat(config.site, config.method)

@@ -24,6 +24,15 @@ const router = new Router({
         auth: needAuth,
         title: '首页'
       }
+    },
+    {
+      path: '/message',
+      name: 'message',
+      component: () => import('@/components/message/message'),
+      meta: {
+        auth: needAuth,
+        title: '消息'
+      }
     }
   ]
 })
